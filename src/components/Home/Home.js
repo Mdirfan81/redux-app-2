@@ -7,7 +7,7 @@ import { APIKey } from "../../common/api/MovieApiKey";
 const Home = () => {
   useEffect(() => {
     const movieText = "Harry";
-    const ferchMovies = async () => {
+    const fetchMovies = async () => {
       const response = await movieAPI
         .get(`?apikey=${APIKey}&s=${movieText}&type=movie`)
         .catch((err) => {
@@ -15,6 +15,7 @@ const Home = () => {
         });
       console.log("API Data", response);
     };
+    fetchMovies();
   }, []);
   return (
     <div>
