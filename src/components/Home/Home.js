@@ -3,20 +3,20 @@ import MovieListing from "../MovieListing/MovieListing";
 import "./Home.scss";
 import movieAPI from "../../common/api/movieAPI";
 import { APIKey } from "../../common/api/MovieApiKey";
+import { useDispatch } from "react-redux";
+// import { addMovies } from "../../features/movies/movieSlice";
+import {
+  fetchAsyncMovies,
+  fetchAsyncShows,
+} from "../../features/movies/movieSlice";
 
 const Home = () => {
+  const movieText = "Harry";
+  const dispatch = useDispatch();
   useEffect(() => {
-    const movieText = "Harry";
-    const fetchMovies = async () => {
-      const response = await movieAPI
-        .get(`?apikey=${APIKey}&s=${movieText}&type=movie`)
-        .catch((err) => {
-          console.warn("Err", err);
-        });
-      console.log("API Data", response);
-    };
-    fetchMovies();
-  }, []);
+    dispatch(fetchAsyncMovies());
+    dispatch(fetchAsyncShows());
+  }, [dispatch]);
   return (
     <div>
       <div className="banner-img">
