@@ -7,7 +7,7 @@ import "./MovieListing.scss";
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
-  // console.log("Movie Listing", movies.Response === "True");
+  console.log("Movie Listing", movies);
   let renderMovies = "";
   renderMovies =
     movies.Response === "True" ? (
